@@ -6,6 +6,7 @@
 
     <groupId>org.example</groupId>
     <artifactId>myMavenProject</artifactId>
+    <packaging>war</packaging>
     <version>1.0-SNAPSHOT</version>
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
@@ -15,6 +16,21 @@
 
 <build>
         <plugins>
+		<!-- https://mvnrepository.com/artifact/org.apache.tomcat.maven/common-tomcat-maven-plugin -->
+		<plugin>
+  		   <groupId>org.apache.tomcat.maven</groupId>
+ 		   <artifactId>common-tomcat-maven-plugin</artifactId>
+   		   <version>2.2</version>
+		   <configuration>
+			<server>maven-tomcat-war-deployment-server</server>
+			<url>http://15.207.100.183:8080/</url>
+			<username>war-deployer</username>
+			<password>maven-tomcat<password>
+                   </configuration>
+		</plugin>
+
+
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
@@ -29,6 +45,9 @@
                     </includes>
                 </configuration>
             </plugin>
+
+
+
         </plugins>
     </build>
 </project>
